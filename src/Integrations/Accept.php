@@ -39,8 +39,9 @@ abstract class Accept extends PayMob implements Integrable
      *
      * @param array     $items
      * @param float|int $total
+     * @param int $merchant_order_id
      */
-    protected function orderRegistration($items, $total)
+    protected function orderRegistration($items, $total, $merchant_order_id)
     {
         $response = Http::withToken($this->auth_token)
             ->post($this->getConfigKey('url.order'), [
@@ -48,6 +49,7 @@ abstract class Accept extends PayMob implements Integrable
                 'amount_cents'    => $this->getAmountInCents($total),
                 'currency'        => $this->getCurrency(),
                 'items'           => $items,
+                'merchant_order_id' => $merchant_order_id,
             ])
             ->throw();
 
@@ -104,5 +106,5 @@ abstract class Accept extends PayMob implements Integrable
 
     /* -------------------------------------------------------------------------- */
 
-    abstract public function checkOut($total, $items = []);
+    abstract public function checkOut($total, $merchant_order_id, $items = []);
 }
