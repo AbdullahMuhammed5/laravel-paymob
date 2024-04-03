@@ -26,6 +26,10 @@ return [
                 'url'            => 'https://accept.paymobsolutions.com/api/acceptance/payments/pay',
                 'integration_id' => env('ACCEPT_MW_INTEGRATION_ID'),
             ],
+            'fawry' => [
+                'url'            => 'https://accept.paymobsolutions.com/api/acceptance/payments/pay',
+                'integration_id' => env('ACCEPT_FAWRY_INTEGRATION_ID'),
+            ],
         ],
     ],
 ];

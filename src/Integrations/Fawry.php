@@ -4,17 +4,17 @@ namespace ctf0\PayMob\Integrations;
 
 use Illuminate\Support\Facades\Http;
 
-class MobileWallet extends Accept
+class Fawry extends Accept
 {
     public function getPaymentTypeName(): string
     {
-        return 'mobile_wallet';
+        return 'fawry';
     }
 
     /**
      * finish checkout process.
      *
-     * https://acceptdocs.paymobsolutions.com/docs/mobile-wallets
+     * https://acceptdocs.paymobsolutions.com/docs/kiosk-payments
      *
      * @param float|int $total
      * @param array     $items
@@ -29,8 +29,8 @@ class MobileWallet extends Accept
         $response = Http::withToken($this->auth_token)
             ->post($url, [
                 'source' => [
-                    'identifier' => $this->user->phone,
-                    'subtype'    => 'WALLET',
+                    'identifier' => 'AGGREGATOR',
+                    'subtype'    => 'AGGREGATOR',
                 ],
                 'payment_token' => $this->paymentKeyRequest($order_id, $total),
             ])
