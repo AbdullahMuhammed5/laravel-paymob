@@ -24,7 +24,7 @@ class MobileWallet extends Accept
         $this->checkForMinAmount($total);
 
         $url      = $this->getConfigKey($this->getPaymentTypeConfig('url'));
-        $order_id = $this->orderRegistration($items, $merchant_order_id,$total);
+        $order_id = $this->orderRegistration($items, $total, $merchant_order_id);
 
         $response = Http::withToken($this->auth_token)
             ->post($url, [
