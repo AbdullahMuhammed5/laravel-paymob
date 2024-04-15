@@ -36,6 +36,6 @@ class Fawry extends Accept
             ])
             ->throw();
 
-        return $response['redirect_url'] ?: '';
+        return $response->json();
     }
 }
