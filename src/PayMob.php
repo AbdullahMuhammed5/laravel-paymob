@@ -75,7 +75,7 @@ class PayMob
             ->get("$url/$trans_id/hmac_calc")
             ->throw();
 
-        return $response['hmac'] == $hmac ?: abort(400, __('paymob::messages.incorrect_hmac'));
+        return $response['hmac'] == $hmac;
     }
 
     /**
